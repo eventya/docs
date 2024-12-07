@@ -1,70 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventya Dev Docs</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.0/flowbite.min.js"></script>
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+  </head>
 
-<body class="bg-gray-100">
+  <body class="bg-gray-100">
     <!-- Sticky Navbar -->
     <nav class="bg-blue-600 text-white fixed w-full top-0 z-50 shadow">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0 text-xl font-bold">Eventya Dev Docs</div>
-                <div class="hidden md:flex space-x-4">
-                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Home</a>
-                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700">About</a>
-                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Contact</a>
-                </div>
-                <button id="menu-button" data-collapse-toggle="mobile-menu" type="button"
-                    class="md:hidden px-3 py-2 border rounded text-white border-white hover:bg-blue-700">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex-shrink-0 text-xl font-bold">Eventya Dev Docs</div>
+          <div class="hidden md:flex space-x-4">
+            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Home</a>
+            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700">About</a>
+            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Contact</a>
+          </div>
+          <button id="menu-button" data-collapse-toggle="mobile-menu" type="button"
+            class="md:hidden px-3 py-2 border rounded text-white border-white hover:bg-blue-700">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-blue-600">
-            <ul class="space-y-2 px-4 py-2">
-                <li><a href="#" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Home</a></li>
-                <li><a href="#" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700">About</a></li>
-                <li><a href="#" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Contact</a></li>
-            </ul>
-        </div>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden bg-blue-600">
+        <ul class="space-y-2 px-4 py-2">
+          <li><a href="#" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Home</a></li>
+          <li><a href="#" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700">About</a></li>
+          <li><a href="#" class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Contact</a></li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Sidebar and Content -->
     <div class="flex pt-16">
-        <!-- Sidebar -->
-        <aside class="hidden md:block bg-white w-64 min-h-screen border-r">
-            <div class="p-4">
-                <h2 class="text-lg font-semibold mb-4">Table of contents</h2>
-                <ul class="space-y-2">
-                    <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-200">Dashboard</a></li>
-                    <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-200">Settings</a></li>
-                    <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-200">Profile</a></li>
-                    <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-200">Logout</a></li>
-                </ul>
-            </div>
-        </aside>
+      <!-- Sidebar -->
+      <aside class="hidden md:block bg-white w-64 min-h-screen border-r">
+        <div class="p-4">
+          <h2 class="text-lg font-semibold mb-4">Table of contents</h2>
+          <ul class="space-y-2">
+            <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-200">Dashboard</a></li>
+            <li><a href="{{ '/layouts/' | relative_url }}"
+                class="block px-3 py-2 rounded-md hover:bg-gray-200">Layouts</a></li>
+            <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-200">Profile</a></li>
+            <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-200">Logout</a></li>
+          </ul>
+        </div>
+      </aside>
 
-        <!-- Main Content -->
-        <main class="flex-1 p-6 bg-gray-100">
-            {{ content }}
-        </main>
+      <!-- Main Content -->
+      <main class="flex-1 p-6 bg-gray-100">
+        <div id="markdown-content" class="markdown-body">
+          {{ content }}
+        </div>
+      </main>
     </div>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-4 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            &copy; 2024 Eventya. All rights reserved.
-        </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        &copy; 2024 Eventya. All rights reserved.
+      </div>
     </footer>
 
 
-</body>
+    <script src="/assets/js/script.js"></script>
+  </body>
+
 </html>

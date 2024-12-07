@@ -1,0 +1,6 @@
+.markdown-body pre {
+  background-color: black;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+}

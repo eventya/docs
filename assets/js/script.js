@@ -1,24 +1,32 @@
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll("pre code").forEach((codeBlock) => {
-      // Create a copy button
-      const button = document.createElement("button");
-      button.textContent = "Copy";
-      button.className = "copy-button";
-
-      // Add click event to copy code
-      button.addEventListener("click", () => {
-          navigator.clipboard.writeText(codeBlock.textContent).then(() => {
-              button.textContent = "Copied!";
-              setTimeout(() => (button.textContent = "Copy"), 2000);
-          });
-      });
-
-      // Append button to the code block
-      const pre = codeBlock.parentNode;
-      pre.style.position = "relative";
-      button.style.position = "absolute";
-      button.style.top = "10px";
-      button.style.right = "10px";
-      pre.appendChild(button);
-  });
+document.addEventListener('DOMContentLoaded', function () {
+  listenForCopyActions();
 });
+
+
+function listenForCopyActions() {
+  // Get the button element
+  const button = document.getElementById('copy-button');
+
+  if (!button) {
+    return;
+  }
+
+  button.addEventListener('click', function() {
+    // Get the text content of the code block
+    const code = document.getElementById('code-block').innerText.trim();
+
+    // Copy to clipboard
+    navigator.clipboard.writeText(code).then(() => {
+        // Show success message
+        const successMessage = document.getElementById('copy-success');
+        successMessage.classList.remove('hidden');
+
+        // Hide message after 2 seconds
+        setTimeout(() => {
+            successMessage.classList.add('hidden');
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy code: ', err);
+    });
+  });
+}
