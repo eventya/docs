@@ -1,6 +1,6 @@
 ---
 title: Layouts
-layout: home
+layout: default
 ---
 
 # Layouts
